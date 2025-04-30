@@ -1,0 +1,324 @@
+[
+  {
+    "id": 1,
+    "name": "Weight Loss Meal Plan",
+    "description": "A calorie-controlled meal plan with high protein and fiber to support weight loss while providing essential nutrients.",
+    "category": "fitness",
+    "subcategory": "weight_loss",
+    "days": [
+      {
+        "day": 1,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_id": 6,
+            "recipe_name": "Oats Idli",
+            "calories": 120
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_id": 5,
+            "recipe_name": "Dal Tadka with Brown Rice",
+            "calories": 320
+          },
+          {
+            "meal_type": "Snack",
+            "recipe_id": 4,
+            "recipe_name": "Sprouts Chaat",
+            "calories": 150
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_id": 2,
+            "recipe_name": "Palak Paneer with Roti",
+            "calories": 380
+          }
+        ],
+        "total_calories": 970
+      },
+      {
+        "day": 2,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_id": 1,
+            "recipe_name": "Ragi Dosa",
+            "calories": 120
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_id": 7,
+            "recipe_name": "Vegetable Khichdi",
+            "calories": 250
+          },
+          {
+            "meal_type": "Snack",
+            "recipe_id": 3,
+            "recipe_name": "Masala Chai with Roasted Chana",
+            "calories": 150
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_id": 5,
+            "recipe_name": "Dal Tadka with Vegetable Pulao",
+            "calories": 350
+          }
+        ],
+        "total_calories": 870
+      }
+    ],
+    "average_daily_calories": 920,
+    "protein": "High",
+    "carbs": "Moderate",
+    "fat": "Low",
+    "recommended_for": ["Weight loss", "Fitness enthusiasts", "Active individuals"],
+    "image_url": "https://images.unsplash.com/photo-1518310532637-f5225f94f3c3"
+  },
+  {
+    "id": 2,
+    "name": "Diabetes-Friendly Meal Plan",
+    "description": "A balanced meal plan with low glycemic index foods to help manage blood sugar levels while ensuring adequate nutrition.",
+    "category": "special_diet",
+    "subcategory": "diabetes",
+    "days": [
+      {
+        "day": 1,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_id": 6,
+            "recipe_name": "Oats Idli",
+            "calories": 120
+          },
+          {
+            "meal_type": "Mid-morning",
+            "recipe_name": "Apple with 5 almonds",
+            "calories": 100
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_id": 5,
+            "recipe_name": "Dal Tadka with Brown Rice",
+            "calories": 320
+          },
+          {
+            "meal_type": "Evening Snack",
+            "recipe_id": 4,
+            "recipe_name": "Sprouts Chaat",
+            "calories": 150
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_id": 7,
+            "recipe_name": "Vegetable Khichdi",
+            "calories": 250
+          }
+        ],
+        "total_calories": 940
+      },
+      {
+        "day": 2,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_id": 1,
+            "recipe_name": "Ragi Dosa",
+            "calories": 120
+          },
+          {
+            "meal_type": "Mid-morning",
+            "recipe_name": "Buttermilk with roasted cumin",
+            "calories": 70
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_id": 2,
+            "recipe_name": "Palak Paneer with Multigrain Roti",
+            "calories": 350
+          },
+          {
+            "meal_type": "Evening Snack",
+            "recipe_id": 8,
+            "recipe_name": "Beet and Carrot Raita",
+            "calories": 80
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_name": "Vegetable Upma",
+            "calories": 220
+          }
+        ],
+        "total_calories": 840
+      }
+    ],
+    "average_daily_calories": 890,
+    "protein": "Moderate",
+    "carbs": "Low to Moderate (Complex)",
+    "fat": "Moderate",
+    "recommended_for": ["Diabetics", "Pre-diabetics", "Blood sugar management"],
+    "image_url": "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea"
+  },
+  {
+    "id": 3,
+    "name": "Pregnancy Nutrition Plan",
+    "description": "A nutrient-dense meal plan with adequate calories and essential micronutrients for expecting mothers.",
+    "category": "motherhood",
+    "subcategory": "pregnant",
+    "days": [
+      {
+        "day": 1,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_name": "Paneer Paratha with Curd",
+            "calories": 350
+          },
+          {
+            "meal_type": "Mid-morning",
+            "recipe_id": 3,
+            "recipe_name": "Masala Chai with Dry Fruits",
+            "calories": 180
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_id": 7,
+            "recipe_name": "Vegetable Khichdi with Curd",
+            "calories": 350
+          },
+          {
+            "meal_type": "Evening Snack",
+            "recipe_id": 4,
+            "recipe_name": "Sprouts Chaat with Pomegranate",
+            "calories": 200
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_id": 2,
+            "recipe_name": "Palak Paneer with Roti and Beet Raita",
+            "calories": 450
+          }
+        ],
+        "total_calories": 1530
+      },
+      {
+        "day": 2,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_id": 6,
+            "recipe_name": "Oats Idli with Coconut Chutney",
+            "calories": 200
+          },
+          {
+            "meal_type": "Mid-morning",
+            "recipe_name": "Mixed Fruit Smoothie with Flax Seeds",
+            "calories": 250
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_name": "Rajma Chawal with Vegetable Salad",
+            "calories": 450
+          },
+          {
+            "meal_type": "Evening Snack",
+            "recipe_name": "Roasted Fox Nuts (Makhana) with Milk",
+            "calories": 200
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_id": 5,
+            "recipe_name": "Dal Tadka with Jeera Rice and Mixed Vegetable Curry",
+            "calories": 400
+          }
+        ],
+        "total_calories": 1500
+      }
+    ],
+    "average_daily_calories": 1515,
+    "protein": "High",
+    "carbs": "Moderate to High",
+    "fat": "Moderate",
+    "recommended_for": ["Pregnant women", "Second and third trimester", "Nutritional support"],
+    "special_nutrients": ["Folic Acid", "Iron", "Calcium", "Omega-3 Fatty Acids"],
+    "image_url": "https://images.unsplash.com/photo-1477506350614-fcdc29a3b157"
+  },
+  {
+    "id": 4,
+    "name": "Child Nutrition Plan (Ages 3-5)",
+    "description": "A balanced meal plan designed to support growth and development in young children with nutrient-dense foods.",
+    "category": "parenting",
+    "subcategory": "3_5",
+    "days": [
+      {
+        "day": 1,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_name": "Ragi Porridge with Banana and Honey",
+            "calories": 200
+          },
+          {
+            "meal_type": "Mid-morning",
+            "recipe_name": "Apple slices with Peanut Butter",
+            "calories": 150
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_id": 7,
+            "recipe_name": "Vegetable Khichdi with Curd",
+            "calories": 300
+          },
+          {
+            "meal_type": "Evening Snack",
+            "recipe_name": "Homemade Baked Sweet Potato Chips",
+            "calories": 120
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_name": "Mini Vegetable Uttapam with Tomato Chutney",
+            "calories": 250
+          }
+        ],
+        "total_calories": 1020
+      },
+      {
+        "day": 2,
+        "meals": [
+          {
+            "meal_type": "Breakfast",
+            "recipe_name": "Besan Cheela with Grated Vegetables",
+            "calories": 200
+          },
+          {
+            "meal_type": "Mid-morning",
+            "recipe_name": "Mixed Fruit Bowl with Honey Yogurt",
+            "calories": 150
+          },
+          {
+            "meal_type": "Lunch",
+            "recipe_name": "Spinach and Paneer Paratha with Curd",
+            "calories": 300
+          },
+          {
+            "meal_type": "Evening Snack",
+            "recipe_name": "Banana and Date Smoothie",
+            "calories": 180
+          },
+          {
+            "meal_type": "Dinner",
+            "recipe_name": "Vegetable Pulao with Raita",
+            "calories": 250
+          }
+        ],
+        "total_calories": 1080
+      }
+    ],
+    "average_daily_calories": 1050,
+    "protein": "Moderate",
+    "carbs": "Moderate",
+    "fat": "Moderate",
+    "recommended_for": ["Children ages 3-5", "Growth support", "Cognitive development"],
+    "special_nutrients": ["Calcium", "Iron", "Vitamin A", "Vitamin D"],
+    "image_url": "https://images.unsplash.com/photo-1464454709131-ffd692591ee5"
+  }
+]

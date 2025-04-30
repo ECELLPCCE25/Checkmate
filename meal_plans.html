@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+
+{% block title %}Ahaar Meal Plans - Personalized Nutrition{% endblock %}
+
+{% block content %}
+<!-- Meal Plans Header -->
+<div class="dashboard-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h2 class="text-white mb-2">Your Meal Plans</h2>
+                <p class="text-white-50 mb-0">Personalized nutrition plans to help you achieve your health goals</p>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-light me-2">Dashboard</a>
+                <button class="btn btn-secondary">Create New Plan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Meal Plans Content -->
+<section class="py-5">
+    <div class="container">
+        <!-- Category Filter -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#" class="btn btn-primary">All Plans</a>
+                            <a href="#" class="btn btn-outline-primary">Fitness</a>
+                            <a href="#" class="btn btn-outline-primary">Special Diet</a>
+                            <a href="#" class="btn btn-outline-primary">Motherhood</a>
+                            <a href="#" class="btn btn-outline-primary">Parenting</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Meal Plans -->
+        <div class="row">
+            {% for plan in meal_plans %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">{{ plan.name }}</h5>
+                            <span class="badge bg-primary">{{ plan.category | capitalize }}</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-5">
+                                <img src="{{ plan.image_url }}" alt="{{ plan.name }}" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-7">
+                                <p>{{ plan.description }}</p>
+                                <div class="d-flex mb-2">
+                                    <div class="me-3">
+                                        <small class="text-muted d-block">Daily Calories</small>
+                                        <span class="fw-bold">{{ plan.average_daily_calories }}</span>
+                                    </div>
+                                    <div class="me-3">
+                                        <small class="text-muted d-block">Protein</small>
+                                        <span class="fw-bold">{{ plan.protein }}</span>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted d-block">Carbs</small>
+                                        <span class="fw-bold">{{ plan.carbs }}</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="badge bg-success me-1">{{ plan.days|length }} Days</span>
+                                    {% if plan.subcategory == 'weight_loss' %}
+                                    <span class="badge bg-info">Weight Loss</span>
+                                    {% elif plan.subcategory == 'diabetes' %}
+                                    <span class="badge bg-warning text-dark">Diabetes</span>
+                                    {% elif plan.subcategory == 'pregnant' %}
+                                    <span class="badge bg-danger">Pregnancy</span>
+                                    {% elif plan.subcategory == '3_5' %}
+                                    <span class="badge bg-secondary">Children 3-5</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sample Day Menu -->
+                        <h6>Sample Day Menu</h6>
+                        <div class="list-group list-group-flush small">
+                            {% for meal in plan.days[0].meals %}
+                            <div class="list-group-item px-0">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">{{ meal.meal_type }}</span>
+                                    <span>{{ meal.calories }} cal</span>
+                                </div>
+                                <span>{{ meal.recipe_name }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="btn-group w-100">
+                            <a href="#" class="btn btn-outline-primary">View Details</a>
+                            <a href="#" class="btn btn-primary">Activate Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Nutrition Tips -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+                <h3>Nutrition Tips for Indian Cuisine</h3>
+                <p>Make the most of your meal plans with these expert tips on Indian cooking.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Spices as Medicine</h5>
+                        <p>Many Indian spices like turmeric, cumin, and coriander have medicinal properties. Turmeric contains curcumin, which has powerful anti-inflammatory effects and is a strong antioxidant.</p>
+                        <p>Try to incorporate a variety of spices in your daily cooking for both flavor and health benefits.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Mindful Oil Usage</h5>
+                        <p>Traditional Indian cooking can be oil-heavy. Opt for healthier oils like mustard oil or cold-pressed groundnut oil in moderation.</p>
+                        <p>Consider using an air fryer or non-stick cookware to reduce oil consumption without compromising on taste.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Balance Your Thali</h5>
+                        <p>A traditional Indian thali (plate) naturally incorporates all food groups. Aim for a balanced plate with roti/rice, dal, vegetables, curd, and a small amount of pickle or chutney.</p>
+                        <p>This natural balance ensures you get a good mix of carbs, proteins, fats, and micronutrients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom Meal Plan -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h3>Need a Custom Meal Plan?</h3>
+                <p>Our AI can create a completely personalized meal plan tailored to your specific needs, preferences, and health goals.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Based on your medical conditions</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Considers your food preferences</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Adjusts to your calorie requirements</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Uses ingredients available to you</li>
+                </ul>
+                <button class="btn btn-primary">Create Custom Plan</button>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-4">
+                        <h5 class="mb-3 text-center">Meal Plan Questionnaire</h5>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Your Primary Goal</label>
+                                <select class="form-select">
+                                    <option>Weight Loss</option>
+                                    <option>Weight Maintenance</option>
+                                    <option>Weight Gain</option>
+                                    <option>Managing Medical Condition</option>
+                                    <option>General Health</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Dietary Preferences</label>
+                                <select class="form-select">
+                                    <option>Vegetarian</option>
+                                    <option>Vegan</option>
+                                    <option>Non-Vegetarian</option>
+                                    <option>Eggetarian</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Any Food Allergies?</label>
+                                <input type="text" class="form-control" placeholder="e.g., nuts, dairy, gluten">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Preferred Cuisines</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="northIndian" checked>
+                                    <label class="form-check-label" for="northIndian">North Indian</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="southIndian" checked>
+                                    <label class="form-check-label" for="southIndian">South Indian</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="eastIndian">
+                                    <label class="form-check-label" for="eastIndian">East Indian</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="westIndian">
+                                    <label class="form-check-label" for="westIndian">West Indian</label>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="button" class="btn btn-primary">Generate Plan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

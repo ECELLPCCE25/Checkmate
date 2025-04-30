@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+
+{% block title %}Ahaar Dashboard - Your Nutrition Hub{% endblock %}
+
+{% block content %}
+<!-- Dashboard Header -->
+<div class="dashboard-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7">
+                <h2 class="text-white mb-2">Welcome, {{ current_user.first_name if current_user.first_name else current_user.username }}</h2>
+                <p class="text-white-50 mb-0">Your personalized nutrition assistant powered by Indian cuisine wisdom</p>
+            </div>
+            <div class="col-md-5 text-md-end">
+                <a href="{{ url_for('profile') }}" class="btn btn-light me-2">Update Profile</a>
+                <a href="{{ url_for('meal_plans') }}" class="btn btn-secondary">View Meal Plans</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Dashboard Content -->
+<div class="container py-4">
+    {% if page == 'dashboard' %}
+    <!-- Dashboard Overview -->
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <div class="dashboard-stats">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p class="stat-value counter" data-target="{{ current_user.calorie_goal or 2000 }}">0</p>
+                        <p class="stat-label">Daily Calorie Goal</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-fire fa-2x text-primary opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="dashboard-stats">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p class="stat-value counter" data-target="7">0</p>
+                        <p class="stat-label">Meal Plans</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-utensils fa-2x text-primary opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="dashboard-stats">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p class="stat-value counter" data-target="28">0</p>
+                        <p class="stat-label">Saved Recipes</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-book fa-2x text-primary opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="dashboard-stats">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p class="stat-value counter" data-target="12">0</p>
+                        <p class="stat-label">Days Active</p>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-calendar-check fa-2x text-primary opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI-Powered Recipe Recommendation -->
+    <div id="recipeRecommendation" class="mb-4"></div>
+
+    <!-- Featured Recipes -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0">Featured Recipes</h3>
+                <a href="{{ url_for('kitchen') }}" class="btn btn-outline-primary">View All Recipes</a>
+            </div>
+        </div>
+        
+        {% for recipe in featured_recipes %}
+        <div class="col-md-3 mb-4">
+            <div class="card recipe-card h-100">
+                <img src="{{ recipe.image_url }}" class="card-img-top" alt="{{ recipe.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.name }}</h5>
+                    <p class="card-text small">{{ recipe.description }}</p>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span><i class="fas fa-clock me-1"></i> {{ recipe.preparation_time }} min</span>
+                        <span><i class="fas fa-fire me-1"></i> {{ recipe.calories }} cal</span>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <a href="#" class="btn btn-outline-primary btn-sm d-block">View Recipe</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Current Meal Plan -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="mb-0">Your Current Meal Plan</h3>
+                <a href="{{ url_for('meal_plans') }}" class="btn btn-outline-primary">View All Plans</a>
+            </div>
+            
+            {% if meal_plans %}
+            <div class="card">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">{{ meal_plans[0].name }}</h5>
+                        <span class="badge bg-primary">Active</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>{{ meal_plans[0].description }}</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h6>Day 1 Meals</h6>
+                            <div class="meal-plan-timeline">
+                                {% for meal in meal_plans[0].days[0].meals %}
+                                <div class="timeline-item">
+                                    <h6>{{ meal.meal_type }}</h6>
+                                    <p class="mb-0">{{ meal.recipe_name }}</p>
+                                    <small class="text-muted">{{ meal.calories }} calories</small>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h6 class="mb-3">Nutrition Overview</h6>
+                                    <div class="mb-3">
+                                        <label class="form-label mb-1">Calories: {{ meal_plans[0].days[0].total_calories }}</label>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ (meal_plans[0].days[0].total_calories / current_user.calorie_goal or 2000) * 100 }}%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p class="mb-1 small">Protein</p>
+                                            <h6>{{ meal_plans[0].protein }}</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-1 small">Carbs</p>
+                                            <h6>{{ meal_plans[0].carbs }}</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="mb-1 small">Fats</p>
+                                            <h6>{{ meal_plans[0].fat }}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-outline-primary">View Full Plan</a>
+                        <a href="#" class="btn btn-outline-secondary">Generate Shopping List</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="card">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+                    <h5>No Meal Plan Active</h5>
+                    <p>You don't have any active meal plans yet. Create your first personalized plan now.</p>
+                    <a href="{{ url_for('meal_plans') }}" class="btn btn-primary">Create Meal Plan</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% elif page == 'select_category' %}
+    <!-- Category Selection Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0">What brings you to Ahaar?</h4>
+                </div>
+                <div class="card-body">
+                    <p class="mb-4">Let us know your goals so we can personalize your nutrition journey.</p>
+                    
+                    <form method="POST" id="categoryForm" action="{{ url_for('select_category') }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-4">
+                            <label class="form-label">{{ form.user_category.label }}</label>
+                            {{ form.user_category(class="form-select") }}
+                        </div>
+                        
+                        <div id="fitnessOptions" style="display: none;">
+                            <div class="mb-4">
+                                <label class="form-label">{{ form.fitness_goal.label }}</label>
+                                {{ form.fitness_goal(class="form-select") }}
+                            </div>
+                        </div>
+                        
+                        <div id="medicalOptions" style="display: none;">
+                            <div class="mb-4">
+                                <label class="form-label">{{ form.medical_condition.label }}</label>
+                                {{ form.medical_condition(class="form-select") }}
+                            </div>
+                        </div>
+                        
+                        <div id="motherhoodOptions" style="display: none;">
+                            <div class="mb-4">
+                                <label class="form-label">{{ form.motherhood_stage.label }}</label>
+                                {{ form.motherhood_stage(class="form-select") }}
+                            </div>
+                        </div>
+                        
+                        <div id="parentingOptions" style="display: none;">
+                            <div class="mb-4">
+                                <label class="form-label">{{ form.child_age.label }}</label>
+                                {{ form.child_age(class="form-select") }}
+                            </div>
+                        </div>
+                        
+                        <div class="text-end">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% elif page == 'profile' %}
+    <!-- Profile Form -->
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0">Complete Your Profile</h4>
+                </div>
+                <div class="card-body">
+                    <p class="mb-4">Help us create personalized meal plans by providing more details about yourself.</p>
+                    
+                    <form method="POST" action="{{ url_for('profile') }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ form.first_name.label }}</label>
+                                {{ form.first_name(class="form-control") }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ form.last_name.label }}</label>
+                                {{ form.last_name(class="form-control") }}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">{{ form.age.label }}</label>
+                                {{ form.age(class="form-control") }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">{{ form.gender.label }}</label>
+                                {{ form.gender(class="form-select") }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">{{ form.calorie_goal.label }}</label>
+                                {{ form.calorie_goal(class="form-control") }}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ form.height.label }}</label>
+                                <div class="input-group">
+                                    {{ form.height(class="form-control") }}
+                                    <span class="input-group-text">cm</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ form.weight.label }}</label>
+                                <div class="input-group">
+                                    {{ form.weight(class="form-control") }}
+                                    <span class="input-group-text">kg</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ form.user_category.label }}</label>
+                                {{ form.user_category(class="form-select") }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{{ form.dietary_preference.label }}</label>
+                                {{ form.dietary_preference(class="form-select") }}
+                            </div>
+                        </div>
+                        
+                        <div class="text-end">
+                            {{ form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the user category dropdown
+        const userCategorySelect = document.getElementById('user_category');
+        if (userCategorySelect) {
+            // Trigger the change event to show the relevant options
+            userCategorySelect.dispatchEvent(new Event('change'));
+        }
+    });
+</script>
+{% endblock %}

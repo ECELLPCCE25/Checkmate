@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "username": "demo_user",
+    "email": "demo@example.com",
+    "first_name": "Demo",
+    "last_name": "User",
+    "age": 30,
+    "gender": "female",
+    "height": 165,
+    "weight": 65,
+    "user_category": "fitness",
+    "dietary_preference": "vegetarian",
+    "calorie_goal": 1600
+  }
+]

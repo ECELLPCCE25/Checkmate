@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Login to Ahaar - Your Nutrition Assistant{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <div class="text-center mb-4">
+                        <h2 class="mb-3">Welcome Back</h2>
+                        <p>Log in to access your personalized nutrition plans and recipes.</p>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('login') }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">{{ form.email.label }}</label>
+                            {{ form.email(class="form-control", placeholder="Enter your email") }}
+                            {% if form.email.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="password" class="form-label">{{ form.password.label }}</label>
+                            {{ form.password(class="form-control", placeholder="Enter your password") }}
+                            {% if form.password.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember">
+                                <label class="form-check-label" for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="text-primary">Forgot password?</a>
+                        </div>
+                        
+                        <div class="d-grid">
+                            {{ form.submit(class="btn btn-primary btn-lg") }}
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p>Don't have an account? <a href="{{ url_for('signup') }}" class="text-primary">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Indian Food Inspiration Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h3 class="mb-4">Fuel Your Body with the Wisdom of Indian Nutrition</h3>
+                <p class="mb-4">Discover how Ahaar combines ancient nutritional wisdom with modern AI technology to create the perfect meal plans for your unique needs.</p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1610487512810-b614ad747572" class="card-img-top" alt="Indian Spices">
+                    <div class="card-body text-center">
+                        <h5>Ancient Spices, Modern Benefits</h5>
+                        <p class="text-muted">Discover the healing properties of traditional Indian spices.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1518310532637-f5225f94f3c3" class="card-img-top" alt="Balanced Meal Planning">
+                    <div class="card-body text-center">
+                        <h5>Balanced Meal Planning</h5>
+                        <p class="text-muted">Create perfectly balanced meals that suit your body's needs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1566578312612-d903c67c4ad2" class="card-img-top" alt="Indian Ingredients">
+                    <div class="card-body text-center">
+                        <h5>Nutrient-Rich Ingredients</h5>
+                        <p class="text-muted">Incorporate superfoods from Indian cuisine into your diet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

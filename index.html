@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+
+{% block title %}Ahaar - AI-Powered Indian Nutrition & Meal Planning Assistant{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="mb-4">Discover the Power of <span class="text-secondary">Indian Nutrition</span></h1>
+                <p class="mb-4">Ahaar is your AI-powered nutrition assistant focusing on the rich heritage of Indian cuisine. Personalized meal plans, recipe suggestions, and health insights—all in one place.</p>
+                <div class="d-flex">
+                    <a href="{{ url_for('signup') }}" class="btn btn-secondary btn-lg me-3">Get Started</a>
+                    <a href="#features" class="btn btn-light btn-lg">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1527430253228-e93688616381" alt="AI Nutrition Assistant" class="img-fluid ai-robot-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Cards Section -->
+<section class="features py-5" id="features">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6 text-center">
+                <h2 class="mb-3">How Ahaar Helps You</h2>
+                <p>Discover features tailored to your unique dietary needs and health goals.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-4 fade-in" data-delay="0s">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h5 class="card-title">Personalized Meal Plans</h5>
+                        <p class="card-text">Custom nutrition plans based on your health goals and dietary preferences.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 fade-in" data-delay="0.2s">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h5 class="card-title">Ingredient Scanning</h5>
+                        <p class="card-text">Scan ingredients and get instant recipe suggestions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 fade-in" data-delay="0.4s">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h5 class="card-title">Smart Reminders</h5>
+                        <p class="card-text">Timely alerts for hydration, medication, and meal preparation.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 fade-in" data-delay="0.6s">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h5 class="card-title">Food Waste Reduction</h5>
+                        <p class="card-text">Track your pantry and get alerted about expiring ingredients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3D Scrolling Recipe Cards Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6 text-center">
+                <h2 class="mb-3">Explore Indian Recipes</h2>
+                <p>Discover the rich flavors and health benefits of authentic Indian cuisine.</p>
+            </div>
+        </div>
+        <div class="recipes-scroll-container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card recipe-card">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352" class="card-img-top" alt="Palak Paneer">
+                        <div class="card-body recipe-card-content">
+                            <h5 class="card-title">Palak Paneer</h5>
+                            <p class="card-text">A classic North Indian dish made with spinach and cottage cheese, packed with protein and iron.</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-clock me-2"></i> 30 mins</span>
+                                <span><i class="fas fa-fire me-2"></i> 280 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card recipe-card">
+                        <img src="https://images.unsplash.com/photo-1464454709131-ffd692591ee5" class="card-img-top" alt="Ragi Dosa">
+                        <div class="card-body recipe-card-content">
+                            <h5 class="card-title">Ragi Dosa</h5>
+                            <p class="card-text">A healthy South Indian breakfast option made with finger millet (ragi) flour, rich in calcium and iron.</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-clock me-2"></i> 20 mins</span>
+                                <span><i class="fas fa-fire me-2"></i> 120 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card recipe-card">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601" class="card-img-top" alt="Oats Idli">
+                        <div class="card-body recipe-card-content">
+                            <h5 class="card-title">Oats Idli</h5>
+                            <p class="card-text">A healthy twist to traditional South Indian idli, made with oats for added fiber.</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-clock me-2"></i> 30 mins</span>
+                                <span><i class="fas fa-fire me-2"></i> 120 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card recipe-card">
+                        <img src="https://images.unsplash.com/34/rcaNUh3pQ9GD8w7Iy8qE__DSC0940.jpg" class="card-img-top" alt="Vegetable Khichdi">
+                        <div class="card-body recipe-card-content">
+                            <h5 class="card-title">Vegetable Khichdi</h5>
+                            <p class="card-text">A complete one-pot meal with rice, lentils, and mixed vegetables, ideal for easy digestion.</p>
+                            <div class="d-flex justify-content-between">
+                                <span><i class="fas fa-clock me-2"></i> 40 mins</span>
+                                <span><i class="fas fa-fire me-2"></i> 250 cal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- User Categories Section -->
+<section class="category-selection py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6 text-center">
+                <h2 class="mb-3">Tailored For Your Needs</h2>
+                <p>Choose your journey based on your specific health and nutrition requirements.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card category-card h-100">
+                    <div class="category-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h5>Fitness-Conscious</h5>
+                    <p>Personalized plans for weight gain, loss, or maintenance with calorie tracking.</p>
+                    <a href="{{ url_for('signup') }}" class="btn btn-sm btn-outline-primary mt-auto">Choose This</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card category-card h-100">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h5>Special Dietary Needs</h5>
+                    <p>Specialized nutrition for conditions like diabetes, PCOS, and hypertension.</p>
+                    <a href="{{ url_for('signup') }}" class="btn btn-sm btn-outline-primary mt-auto">Choose This</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card category-card h-100">
+                    <div class="category-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h5>Motherhood</h5>
+                    <p>Nutrition support for pre-natal, pregnant, and postpartum stages.</p>
+                    <a href="{{ url_for('signup') }}" class="btn btn-sm btn-outline-primary mt-auto">Choose This</a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card category-card h-100">
+                    <div class="category-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h5>Parenting</h5>
+                    <p>Child nutrition plans to support growth and development needs.</p>
+                    <a href="{{ url_for('signup') }}" class="btn btn-sm btn-outline-primary mt-auto">Choose This</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Assistant / Robot Section -->
+<section class="ai-assistant py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1" alt="AI Nutrition Assistant" class="img-fluid">
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="mb-4">Meet Your Personal AI Nutrition Guide</h2>
+                <p class="mb-4">Our AI assistant analyzes your health data, preferences, and goals to provide personalized nutrition advice and meal recommendations focusing on authentic Indian cuisine.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Real-time nutrition tracking</li>
+                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Personalized recipe suggestions</li>
+                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Smart health insights</li>
+                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> 24/7 nutrition guidance</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Ask Our AI Assistant</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-6 text-center">
+                <h2 class="mb-3">What Our Users Say</h2>
+                <p>Join thousands of satisfied users on their journey to better health.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <span>PR</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Priya R.</h5>
+                                <p class="text-muted small mb-0">Fitness Enthusiast</p>
+                            </div>
+                        </div>
+                        <p class="card-text">"Ahaar completely transformed my approach to diet. The personalized meal plans helped me achieve my weight loss goals while enjoying delicious Indian food!"</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <span>AK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Amit K.</h5>
+                                <p class="text-muted small mb-0">Diabetic Patient</p>
+                            </div>
+                        </div>
+                        <p class="card-text">"As someone with diabetes, finding safe and tasty meals was always a challenge. Ahaar's specialized plans have made managing my condition so much easier."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                    <span>SM</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Suman M.</h5>
+                                <p class="text-muted small mb-0">New Mother</p>
+                            </div>
+                        </div>
+                        <p class="card-text">"During my postpartum journey, Ahaar's motherhood nutrition plans were a lifesaver. The app understood exactly what nutrients I needed while breastfeeding."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Ready to Transform Your Nutrition?</h2>
+                <p class="mb-4">Join Ahaar today and discover the perfect balance of taste and nutrition with our AI-powered meal planning assistant.</p>
+                <a href="{{ url_for('signup') }}" class="btn btn-secondary btn-lg">Get Started For Free</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
